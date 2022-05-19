@@ -1,0 +1,48 @@
+{
+  "name": "meu-guru-practice-test-back-end",
+  "version": "1.0.0",
+  "description": "O back-end do projeto para o teste prático da Meu Guru",
+  "main": "src/index.ts",
+  "scripts": {
+    "start": "node .",
+    "dev": "ts-node-dev src/index.ts",
+    "build": "/bin/sh tsc_eval.sh",
+    "db:reset": "npx sequelize-cli db:drop && npx sequelize-cli db:create && npx sequelize-cli db:migrate && npx sequelize-cli db:seed:all",
+    "prestart": "npm run build && npm run db:reset",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "lint": "eslint ./src --ext .ts"
+  },
+  "keywords": [],
+  "author": "Lucas Pinheiro",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/bcryptjs": "^2.4.2",
+    "@types/cors": "^2.8.12",
+    "@types/express": "^4.17.13",
+    "@types/jsonwebtoken": "^8.5.8",
+    "@types/node": "^17.0.34",
+    "@types/shelljs": "^0.8.11",
+    "@types/validator": "^13.7.2",
+    "@typescript-eslint/eslint-plugin": "^5.24.0",
+    "@typescript-eslint/parser": "^5.24.0",
+    "bcryptjs": "^2.4.3",
+    "eslint": "^8.15.0",
+    "eslint-config-airbnb-typescript": "^17.0.0",
+    "eslint-plugin-import": "^2.26.0",
+    "nodemon": "^2.0.16",
+    "shelljs": "^0.8.5",
+    "ts-node": "^10.7.0",
+    "ts-node-dev": "^1.1.8",
+    "typescript": "^4.6.4"
+  },
+  "dependencies": {
+    "@prisma/client": "^3.14.0",
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.1",
+    "express": "^4.18.1",
+    "jsonwebtoken": "^8.5.1",
+    "pg": "^8.7.3",
+    "pg-hstore": "^2.3.4",
+    "prisma": "^3.14.0"
+  }
+}
