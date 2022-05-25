@@ -3,11 +3,14 @@
   "version": "1.0.0",
   "description": "O back-end do projeto para o teste prático da Meu Guru",
   "main": "src/index.ts",
+  "prisma": {
+    "seed": "ts-node prisma/seed.ts"
+  },
   "scripts": {
     "start": "node .",
     "dev": "ts-node-dev src/index.ts",
     "build": "/bin/sh tsc_eval.sh",
-    "db:reset": "npx sequelize-cli db:drop && npx sequelize-cli db:create && npx sequelize-cli db:migrate && npx sequelize-cli db:seed:all",
+    "db:reset": "npx prisma db push && npx prisma migrate reset",
     "prestart": "npm run build && npm run db:reset",
     "test": "echo \"Error: no test specified\" && exit 1",
     "lint": "eslint ./src --ext .ts"
@@ -40,6 +43,7 @@
     "cors": "^2.8.5",
     "dotenv": "^16.0.1",
     "express": "^4.18.1",
+    "joi": "^17.6.0",
     "jsonwebtoken": "^8.5.1",
     "pg": "^8.7.3",
     "pg-hstore": "^2.3.4",
