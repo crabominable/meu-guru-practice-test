@@ -1,9 +1,9 @@
-import React, { useState } from 'react'
-import { useFormik } from 'formik'
+import React, { useState } from 'react';
+import { useFormik } from 'formik';
 
 import loginSchema from './components/userSchema';
 
-const UserInput = () => {
+function UserInput() {
   const [able, setAble] = useState(true);
   const [err, setError] = useState(false);
 
@@ -20,12 +20,12 @@ const UserInput = () => {
       if (error) {
         return setAble(true);
       }
-      setAble(false);
+      return setAble(false);
     },
 
     onSubmit: (values) => {
       console.log(values);
-      setError(true)
+      setError(true);
     },
   });
 
@@ -33,7 +33,7 @@ const UserInput = () => {
     <form onSubmit={formik.handleSubmit}>
       <div>
         <div>
-        <input
+          <input
             type="text"
             placeholder="Nome"
             {...formik.getFieldProps('name')}
@@ -60,7 +60,7 @@ const UserInput = () => {
         err && <span>Email ou senha inválidos</span>
       }
     </form>
-  )
+  );
 }
 
 export default UserInput;
