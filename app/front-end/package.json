@@ -1,0 +1,23 @@
+{
+  "name": "meu-guru-practice-test-front-end",
+  "version": "1.0.0",
+  "description": "O back-end do projeto para o teste prático da Meu Guru",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "formik": "^2.2.9",
+    "joi": "^17.6.0",
+    "react": "^18.0.0",
+    "react-dom": "^18.0.0"
+  },
+  "devDependencies": {
+    "@types/react": "^18.0.9",
+    "@types/react-dom": "^18.0.5",
+    "@vitejs/plugin-react": "^1.3.0",
+    "typescript": "^4.6.3",
+    "vite": "^2.9.9"
+  }
+}
