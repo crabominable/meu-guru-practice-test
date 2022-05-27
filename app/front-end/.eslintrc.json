@@ -28,7 +28,11 @@
       0
     ],
     "import/extensions": "off",
-    "react/jsx-props-no-spreading": "off"
+    "react/jsx-props-no-spreading": "off",
+    "class-methods-use-this": "off",
+    "no-param-reassign": "off",
+    "import/no-cycle": "off",
+    "react/no-array-index-key": "off"
   },
   "settings": {
     "import/resolver": {

@@ -1,11 +1,17 @@
 import React, { useState } from 'react';
+// import { unwrapResult } from '@reduxjs/toolkit';
+import { useDispatch } from 'react-redux';
 import { useFormik } from 'formik';
 
 import loginSchema from './components/userSchema';
+import { createUser, getAllUsers } from '../../thunk/userThunk';
+import { AppDispatch } from '../../store';
 
 function UserInput() {
   const [able, setAble] = useState(true);
   const [err, setError] = useState(false);
+
+  const dispatch: AppDispatch = useDispatch();
 
   const formik = useFormik({
     initialValues: {
@@ -23,9 +29,9 @@ function UserInput() {
       return setAble(false);
     },
 
-    onSubmit: (values) => {
-      console.log(values);
-      setError(true);
+    onSubmit: async (values) => {
+      dispatch(createUser({ ...values }));
+      dispatch(getAllUsers());
     },
   });
 

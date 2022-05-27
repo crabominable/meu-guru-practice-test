@@ -1,25 +1,39 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 
-const UsersTable = () => {
+import { AppDispatch } from '../../store';
+import { getAllUsers } from '../../thunk/userThunk';
+
+function UsersTable() {
+  const dispatch: AppDispatch = useDispatch();
+  const { users } = useSelector((state: any) => state.UserSlice);
+
+  useEffect(() => {
+    dispatch(getAllUsers());
+  }, []);
+
   return (
     <table>
-      <tr>
-        <th>Company</th>
-        <th>Contact</th>
-        <th>Country</th>
-      </tr>
-      <tr>
-        <td>Alfreds Futterkiste</td>
-        <td>Maria Anders</td>
-        <td>Germany</td>
-      </tr>
-      <tr>
-        <td>Centro comercial Moctezuma</td>
-        <td>Francisco Chang</td>
-        <td>Mexico</td>
-      </tr>
+      <thead>
+        <tr>
+          <th>id</th>
+          <th>name</th>
+          <th>email</th>
+          <th>password</th>
+        </tr>
+      </thead>
+      <tbody>
+        { !users ? 'loading' : users.map((item: any, index: any) => (
+          <tr key={index}>
+            <td>{ item.id }</td>
+            <td>{ item.name }</td>
+            <td>{ item.email }</td>
+            <td>{ item.password }</td>
+          </tr>
+        ))}
+      </tbody>
     </table>
-  )
+  );
 }
 
 export default UsersTable;
