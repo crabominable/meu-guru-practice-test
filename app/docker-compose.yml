@@ -1,52 +1,49 @@
 version: '3.9'
 services:
-  # front-end:
-  #  build: ./front-end
-  #  depends_on:
-  #    back-end:
-  #      condition: service_healthy
-  #  # Os `healthcheck` devem garantir que a aplicação
-  #  # está operacional, antes de liberar o container
-  #  healthcheck:
-  #    test: ["CMD", "lsof", "-t", "-i:3000"]  # Caso utilize outra porta interna para o front, altere ela aqui também
-  #    timeout: 10s
-  #    retries: 5
-  #  ports:
-  #    - 3000:3000
-  #  volumes:
-  #    - ./front-end:/app
-  #  restart: always
+  front-end:
+   build: ./front-end
+   depends_on:
+     back-end:
+       condition: service_healthy
+   # Os `healthcheck` devem garantir que a aplicação
+   # está operacional, antes de liberar o container
+   healthcheck:
+     test: ["CMD", "lsof", "-t", "-i:3000"]  # Caso utilize outra porta interna para o front, altere ela aqui também
+     timeout: 10s
+     retries: 5
+   ports:
+     - 3000:3000
+   volumes:
+     - ./front-end:/app
+   restart: always
   back-end:
    build: ./back-end
    depends_on:
-     db:
+     postgres:
        condition: service_healthy
    ports:
      - 3001:3001
    volumes:
      - ./back-end:/app
    environment:
-     - PORT=3001
+     - DATABASE_URL=postgres://lucas:super_secret@postgres:5432/meu-guru-practice-test?schema=public
+     - PRISMA_CLI_QUERY_ENGINE_TYPE=binary
+     - PRISMA_CLIENT_ENGINE_TYPE=binary
      # Os dados abaixo se referem ao container `db`
      # Dica: Relembre aqui da comunicação interna entre containers
-     - DB_USER=postgres
-     - DB_PASS=postgres
-     - DB_HOST=db
-     - DB_NAME=meu-guru-practice-test
-     - DB_PORT=3306
    healthcheck:
      test: ["CMD", "lsof", "-t", "-i:3001"] # Caso utilize outra porta interna para o back, altere ela aqui também
      timeout: 10s
      retries: 5
    restart: always
-  db:
+  postgres:
     image: postgres
-    container_name: db
+    container_name: postgres
     ports:
-      - 3002:3306
+      - 5432:5432
     environment:
-      POSTGRES_PASSWORD: postgres
-      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: super_secret
+      POSTGRES_USER: lucas
       POSTGRES_DB: meu-guru-practice-test
     restart: 'always'
     healthcheck:

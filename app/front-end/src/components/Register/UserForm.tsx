@@ -7,6 +7,8 @@ import loginSchema from './components/userSchema';
 import { createUser, getAllUsers } from '../../thunk/userThunk';
 import { AppDispatch } from '../../store';
 
+import './UserForm.css';
+
 function UserInput() {
   const [able, setAble] = useState(true);
   const [err, setError] = useState(false);
@@ -36,32 +38,45 @@ function UserInput() {
   });
 
   return (
-    <form onSubmit={formik.handleSubmit}>
-      <div>
-        <div>
+    <form className="userform-container" onSubmit={formik.handleSubmit}>
+      <div className="userform-inputs-container">
+        <label className="userform-label-content" htmlFor="name">
+          Nome:
           <input
+            className="userform-input-content"
             type="text"
             placeholder="Nome"
+            id="name"
             {...formik.getFieldProps('name')}
           />
+        </label>
+        <label className="userform-label-content" htmlFor="email">
+          Email:
           <input
+            className="userform-input-content"
             type="text"
             placeholder="Email"
             {...formik.getFieldProps('email')}
           />
+        </label>
+        <label className="userform-label-content" htmlFor="password">
+          Senha:
           <input
+            className="userform-input-content"
             placeholder="Senha"
             type="password"
+            id="password"
             {...formik.getFieldProps('password')}
           />
-        </div>
-        <button
-          type="submit"
-          disabled={able}
-        >
-          REGISTRAR
-        </button>
+        </label>
       </div>
+      <button
+        className="userform-submit-button"
+        type="submit"
+        disabled={able}
+      >
+        Registrar
+      </button>
       {
         err && <span>Email ou senha inválidos</span>
       }

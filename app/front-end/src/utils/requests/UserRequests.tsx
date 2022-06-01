@@ -8,7 +8,7 @@ class UserRequests {
       url: `${LOCAL}/users`,
       method: 'POST',
       body: {
-        payload,
+        ...payload,
       },
     });
     return response;

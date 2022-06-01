@@ -51,6 +51,7 @@ class UserController extends Controller<User> {
       const cars = await this.service.getAll();
       return res.status(this.statusCode.Ok).json(cars);
     } catch (err) {
+      console.log(err);
       return res.status(this.statusCode.Internal).json({ error: err });
     }
   };

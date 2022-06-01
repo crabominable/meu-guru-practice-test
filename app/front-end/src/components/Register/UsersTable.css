@@ -1,0 +1,41 @@
+.userstable-container {
+  background-color: rgba(125, 125, 125, 0.2);
+  border: 1px solid rgb(0, 219, 175);
+  border-radius: 8px;
+  color: white;
+  padding: 1em;
+  width: 42%;
+}
+
+.userstable-structure-container {
+  width: 100%;
+}
+
+.userstable-thead-content {
+  font-family: Ubuntu;
+}
+
+.userstable-row-content {
+  font-family: Ubuntu;
+  font-size: 15px;
+  padding-top: 10px;
+  text-align: center;
+}
+
+.userstable-icon {
+  width: 20px;
+}
+
+.userstable-row-edit-button {
+  background-color: rgb(255, 255, 135);
+  border: 1px solid rgb(0, 219, 175);
+  border-radius: 4px;
+  padding: 4px 12px;
+}
+
+.userstable-row-delete-button {
+  background-color: rgb(255, 135, 135);
+  border: 1px solid rgb(0, 219, 175);
+  border-radius: 4px;
+  padding: 4px 12px;
+}

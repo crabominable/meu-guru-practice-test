@@ -35,8 +35,7 @@ export const extraReducers = (builder: any) => {
     }
   })
     .addCase(createUser
-      .rejected, (state: any, action: any) => {
-      console.log(action);
+      .rejected, (state: any) => {
       state.loading = 'failed';
     });
 
