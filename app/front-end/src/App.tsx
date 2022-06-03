@@ -18,6 +18,12 @@ function App() {
         src={Logo}
       />
       <div className="app-user-form-container">
+        <p className="app-user-description">
+          Bem vindo ao Meu Guru dashboard,
+          onde você pode cadastrar usuários,
+          visualiza-lo em uma tabela,
+          assim como editar ou deletar o mesmo!
+        </p>
         <NewUser />
       </div>
       <UsersTable />

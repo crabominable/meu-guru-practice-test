@@ -8,27 +8,21 @@
   width: 100%;
 }
 
-.userform-label-content {
-  font-family: Ubuntu;
-  font-size: 15px;
-  font-weight: bold;
-}
-
 .userform-inputs-container {
   align-items: center;
   display: flex;
-  flex-flow: row wrap;
+  flex-flow: row nowrap;
   justify-content: space-evenly;
+  width: 100%;
 }
 
 .userform-input-content {
   border: 0;
   border-radius: 4px;
-  margin-left: 6px;
-  margin-right: 12px;
   margin-top: 4px;
   padding: 4px 4px;
   outline: none;
+  width: 26%;
 }
 
 .userform-submit-button {
@@ -38,6 +32,7 @@
   cursor: pointer;
   font-family: Ubuntu;
   font-weight: bold;
+  margin-top: 1.2em;
   padding: 6px 12px;
 }
 

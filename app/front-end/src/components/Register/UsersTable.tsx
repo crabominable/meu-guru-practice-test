@@ -18,7 +18,7 @@ function UsersTable() {
 
   useEffect(() => {
     dispatch(getAllUsers());
-  }, [users]);
+  }, []);
 
   // eslint-disable-next-line consistent-return
   const handleClick = ({ target }: any, id: any) => {

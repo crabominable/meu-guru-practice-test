@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 // import { unwrapResult } from '@reduxjs/toolkit';
 import { useDispatch, useSelector } from 'react-redux';
 import { useFormik } from 'formik';
@@ -49,35 +49,26 @@ function UserInput() {
   return (
     <form className="userform-container" onSubmit={formik.handleSubmit}>
       <div className="userform-inputs-container">
-        <label className="userform-label-content" htmlFor="name">
-          Nome:
-          <input
-            className="userform-input-content"
-            type="text"
-            placeholder="Nome"
-            id="name"
-            {...formik.getFieldProps('name')}
-          />
-        </label>
-        <label className="userform-label-content" htmlFor="email">
-          Email:
-          <input
-            className="userform-input-content"
-            type="text"
-            placeholder="Email"
-            {...formik.getFieldProps('email')}
-          />
-        </label>
-        <label className="userform-label-content" htmlFor="password">
-          Senha:
-          <input
-            className="userform-input-content"
-            placeholder="Senha"
-            type="password"
-            id="password"
-            {...formik.getFieldProps('password')}
-          />
-        </label>
+        <input
+          className="userform-input-content"
+          type="text"
+          placeholder="Nome"
+          id="name"
+          {...formik.getFieldProps('name')}
+        />
+        <input
+          className="userform-input-content"
+          type="text"
+          placeholder="Email"
+          {...formik.getFieldProps('email')}
+        />
+        <input
+          className="userform-input-content"
+          placeholder="Senha"
+          type="password"
+          id="password"
+          {...formik.getFieldProps('password')}
+        />
       </div>
       <button
         className="userform-submit-button"

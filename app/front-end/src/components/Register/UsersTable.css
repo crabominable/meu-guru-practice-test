@@ -4,6 +4,7 @@
   border-radius: 8px;
   color: white;
   padding: 1em;
+  min-width: 30em;
   width: 42%;
 }
 
