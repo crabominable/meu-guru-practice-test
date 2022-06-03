@@ -4,4 +4,4 @@ import UsersTable from './Register/UsersTable';
 export {
   NewUser,
   UsersTable,
-}
+};

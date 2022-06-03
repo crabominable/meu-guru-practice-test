@@ -33,7 +33,7 @@ class UserRequests {
     return response;
   };
 
-  deleteUser = async ({ id }: any) => {
+  deleteUser = async (id: any) => {
     const response = await AxiosHTTP.Request({
       url: `${LOCAL}/users/${id}`,
       method: 'DELETE',

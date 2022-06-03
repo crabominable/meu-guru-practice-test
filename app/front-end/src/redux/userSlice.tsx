@@ -7,6 +7,8 @@ const initialState = {
   users: [],
   loading: 'idle',
   errorMessage: '',
+  editMode: false,
+  idToBeEdited: null,
 } as IUsersState;
 
 export const UserSlice = createSlice({
@@ -23,10 +25,18 @@ export const UserSlice = createSlice({
     setErrorMessage: (state, action) => {
       state.errorMessage = action.payload;
     },
+    setEditMode: (state, action) => {
+      state.editMode = action.payload;
+    },
+    setIdToBeEdited: (state, action) => {
+      state.idToBeEdited = action.payload;
+    },
   },
 });
 
 // Action creators are generated for each case reducer function
-export const { setUsers, setLoading, setErrorMessage } = UserSlice.actions;
+export const {
+  setUsers, setLoading, setErrorMessage, setEditMode, setIdToBeEdited,
+} = UserSlice.actions;
 
 export default UserSlice.reducer;

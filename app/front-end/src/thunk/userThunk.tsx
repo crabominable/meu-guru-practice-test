@@ -23,7 +23,7 @@ export const updateUser = createAsyncThunk(
 
 export const deleteUser = createAsyncThunk(
   'UserSlice/deleteUser',
-  (payload: string) => UserRequests.deleteUser(payload),
+  (payload: number) => UserRequests.deleteUser(payload),
 );
 
 export const extraReducers = (builder: any) => {

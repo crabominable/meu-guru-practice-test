@@ -1,11 +1,12 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 // import { unwrapResult } from '@reduxjs/toolkit';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useFormik } from 'formik';
 
 import loginSchema from './components/userSchema';
-import { createUser, getAllUsers } from '../../thunk/userThunk';
+import { createUser, getAllUsers, updateUser } from '../../thunk/userThunk';
 import { AppDispatch } from '../../store';
+import { setEditMode } from '../../redux/userSlice';
 
 import './UserForm.css';
 
@@ -14,6 +15,8 @@ function UserInput() {
   const [err, setError] = useState(false);
 
   const dispatch: AppDispatch = useDispatch();
+
+  const { editMode, idToBeEdited } = useSelector((state: any) => state.UserSlice);
 
   const formik = useFormik({
     initialValues: {
@@ -31,7 +34,13 @@ function UserInput() {
       return setAble(false);
     },
 
+    // eslint-disable-next-line consistent-return
     onSubmit: async (values) => {
+      if (editMode === true) {
+        dispatch(updateUser({ id: idToBeEdited, data: values }));
+        dispatch(setEditMode(false));
+        return dispatch(getAllUsers());
+      }
       dispatch(createUser({ ...values }));
       dispatch(getAllUsers());
     },
@@ -75,7 +84,7 @@ function UserInput() {
         type="submit"
         disabled={able}
       >
-        Registrar
+        { !editMode ? 'Registrar' : 'Atualizar' }
       </button>
       {
         err && <span>Email ou senha inválidos</span>
